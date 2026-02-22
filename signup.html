@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaunBreeze | Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="particles"></div>
+    <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+    </div>
+
+    <div class="container">
+        <div class="auth-card">
+            <div class="logo-section">
+                <div class="logo-glow">
+                    <i class="fas fa-bubbles fa-spin"></i>
+                </div>
+                <h1>LaunBreeze</h1>
+                <p class="subtitle typewriter">Create Your Account</p>
+            </div>
+
+            <form id="signupForm">
+                <!-- Full Name -->
+                <div class="input-group">
+                    <div class="input-wrapper ripple-container">
+                        <i class="fas fa-user input-icon"></i>
+                        <input type="text" id="fullname" placeholder=" " required>
+                        <label for="fullname">Full Name</label>
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div class="input-group">
+                    <div class="input-wrapper ripple-container">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input type="email" id="email" placeholder=" " required>
+                        <label for="email">Email Address</label>
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="input-group">
+                    <div class="input-wrapper ripple-container">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input type="password" id="password" placeholder=" " required>
+                        <label for="password">Password</label>
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="input-group">
+                    <div class="input-wrapper ripple-container">
+                        <i class="fas fa-lock-open input-icon"></i>
+                        <input type="password" id="confirmPassword" placeholder=" " required>
+                        <label for="confirmPassword">Confirm Password</label>
+                        <div class="input-glow"></div>
+                    </div>
+                </div>
+
+                <!-- TERMS CHECKBOX - RIGHT UNDER CONFIRM PASSWORD -->
+                <div class="terms-group">
+                    <label class="remember-me">
+                        <input type="checkbox" id="terms" required>
+                        <span>I agree to <a href="terms.html" target="_blank">Terms & Conditions</a></span>
+                    </label>
+                </div>
+
+                <!-- CREATE ACCOUNT BUTTON - NOW VISIBLE -->
+                <button type="submit" class="gradient-btn">
+                    <span class="btn-text">Create Account</span>
+                    <div class="btn-glow"></div>
+                </button>
+
+                <p class="signup-link">Already have an account? 
+                    <a href="login.html">Login here</a>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js">
+        
+    </script>
+    
+    <script>
+document.querySelector("form").addEventListener("submit", function (e) {
+    const termsCheckbox = document.getElementById("terms");
+
+    if (!termsCheckbox.checked) {
+        e.preventDefault(); // stop form submission
+        alert("Please agree to the Terms & Conditions before continuing.");
+    }
+});
+</script>
+</body>
+</html>
