@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaunBreeze Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f1f5f9;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: #000;
+    padding-top: 20px;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.menu-item {
+    color: #ccc;
+    text-decoration: none;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+    transition: 0.3s;
+}
+
+.menu-item:hover {
+    background: #1f1f1f;
+    color: #fff;
+}
+
+.menu-item.active {
+    background: #2a2a2a;
+    color: #fff;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-wrapper {
+    transition: margin-left 0.3s ease;
+    margin-left: 220px;
+}
+
+.main-wrapper.full {
+    margin-left: 0;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background: white;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.toggle-btn {
+    font-size: 20px;
+    cursor: pointer;
+    margin-right: 20px;
+    color: #334155;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    color: #334155;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* Dropdown */
+.dropdown {
+    position: absolute;
+    top: 120%;
+    left: 0;
+    background: white;
+    min-width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    display: none;
+    flex-direction: column;
+    padding: 8px 0;
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 500;
+}
+
+.dropdown a {
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.dropdown a:hover {
+    background: #f1f5f9;
+}
+
+.nav-item:hover .dropdown {
+    display: flex;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile {
+    position: relative;
+    cursor: pointer;
+}
+
+.profile-btn {
+    font-size: 20px;
+    color: #334155;
+}
+
+.profile-dropdown {
+    position: absolute;
+    right: 0;
+    top: 120%;
+    background: white;
+    min-width: 220px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    display: none;
+    flex-direction: column;
+    padding: 8px 0;
+}
+
+.profile-dropdown a {
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #475569;
+}
+
+.profile-dropdown a:hover {
+    background: #f1f5f9;
+}
+
+.content {
+    padding: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <a href="#" class="menu-item active"><i class="fas fa-home"></i> Home</a>
+    <a href="#" class="menu-item"><i class="fas fa-gauge"></i> Dashboard</a>
+    <a href="#" class="menu-item"><i class="fas fa-user"></i> Customer</a>
+    <a href="#" class="menu-item"><i class="fas fa-chart-bar"></i> Reports</a>
+    <a href="#" class="menu-item"><i class="fas fa-gear"></i> Set Up</a>
+    <a href="#" class="menu-item"><i class="fas fa-circle-question"></i> Support</a>
+    <a href="#" class="menu-item"><i class="fas fa-file"></i> Subscription</a>
+</div>
+
+<!-- MAIN WRAPPER -->
+<div class="main-wrapper" id="mainWrapper">
+
+<nav class="navbar">
+
+    <!-- Toggle Button -->
+    <div class="toggle-btn" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </div>
+<ul class="nav-menu">
+        <li class="nav-item">
+            <span class="nav-link">Customer</span>
+            <div class="dropdown">
+                <a href="#">Home</a>
+                <a href="#">Customer Preferences</a>
+                <a href="#">Add New</a>
+                <a href="#">Merge</a>
+                <a href="#">Send Promotionak SMS</a>
+                <a href="#">Customer Rating</a>
+                <a href="#">Customer Advances</a>
+                <a href="#">Active/Passive Customer</a>
+
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <span class="nav-link">Order</span>
+            <div class="dropdown">
+                <a href="#">Edit Order</a>
+                <a href="#">Cancel Order</a>
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <span class="nav-link">Process</span>
+            <div class="dropdown">
+                <a href="#">Print QR tags</a>
+                <a href="#">Send to workshop</a>
+                <a href="#">Receive from workshop</a>
+                <a href="#">Pending for Finishing</a>
+                <a href="#">Pending Stickers</a>
+                <a href="#">Workshop Note</a> 
+            </div>
+        </li>
+
+        <li class="nav-item">
+            <span class="nav-link">PickUp</span>
+            <div class="dropdown">
+                <a href="#">Multiple Payment and Delivery</a>
+                <a href="#">Order Log</a>
+                <a href="#">Home Pick up Schedule</a>
+                <a href="#">Home Drop-Off Schedule</a>
+                <a href="#">Assign to Driver</a>
+            </div>
+        </li>
+
+<li class="nav-item">
+    <span class="nav-link">Account</span>
+    <div class="dropdown">
+        <a href="#">Cash/Day Book</a>
+        <a href="#">Detail Cash/Day Book</a>
+        <a href="#">Expenses</a>
+        <a href="#">Income</a>
+        <a href="#">Payment Type</a>
+        <a href="#">Tax Report</a>
+        <a href="#">Accounts Receivable</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <span class="nav-link">Reports</span>
+    <div class="dropdown">
+        <a href="#">Orders</a>
+        <a href="#">Sales and Delivery</a>
+        <a href="#">Service Wise Order</a>
+        <a href="#">Service And Garment</a>
+        <a href="#">Category Wise Report</a>
+        <a href="#">Garment Wise</a>
+        <a href="#">Garment Status</a>
+        <a href="#">Garment details</a>
+        <a href="#">Payment Adjustment</a>
+        <a href="#">Daily Customer Addition</a>
+        <a href="#">Invoice Statement</a>
+        <a href="#">Login History</a>
+        <a href="#">Marked Ready by User</a>
+        <a href="#">Without Ticket Delivery</a>
+        <a href="#">Order by locality</a>
+        <a href="#">Pending Stock</a>
+        <a href="#">Stock Reconciliation</a>
+        <a href="#">Sales Return Report</a>
+        <a href="#">App Customer Feedback</a>
+        <a href="#">Customers at Risk</a>
+        <a href="#">Feedback Report</a>
+    </div>
+</li>
+<li class="nav-item">
+    <span class="nav-link">Master Data</span>
+    <div class="dropdown">
+        <a href="#">Store Information</a>
+        <a href="#">Price List</a>
+        <a href="#">Garment Descriptions</a>
+        <a href="#">Brand</a>
+        <a href="#">Colours</a>
+        <a href="#">Garment Return Cause</a>
+        <a href="#">Payment Adjustment Type</a>
+        <a href="#">Payment Mode Types</a>
+        <a href="#">Holidays</a>
+        <a href="#">Garment Checking Staff</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <span class="nav-link">Admin</span>
+    <div class="dropdown">
+        <a href="#">Change Password</a>
+        <a href="#">Access Authentication</a>
+        <a href="#">Set Up</a>
+        <a href="#">Design Tag</a>
+        <a href="#">Search Invoice</a>
+        <a href="#">SMS Configuration</a>
+        <a href="#">Daily Dashboard</a>
+        <a href="#">Email and Mobile App Notifications</a>
+        <a href="#">Mobile App Content Setup</a>
+        <a href="#">Payment Gateway Setup</a>
+        <a href="#">Email Configuration</a>
+        <a href="#">Referral-Statistics</a>
+        <a href="#">Discount Restriction</a>
+        <a href="#">Sticker Configuration</a>
+        <a href="#">Package</a>
+        <a href="#">QDC Marketplace</a>
+        <a href="#">Subscription</a>
+        <a href="#">Growth Mate Engage (Live Agent)</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <span class="nav-link">Coupon</span>
+    <div class="dropdown">
+        <a href="#">Redemption</a>
+    </div>
+</li>
+
+<li class="nav-item">
+    <span class="nav-link">Attendance ▾</span>
+    <div class="dropdown">
+        <a href="#">Attendance</a>
+        <a href="#">Salary/Payout</a>
+        <a href="#">Employees</a>
+    </div>
+</li>
+
+    <div class="profile" onclick="toggleProfile()">
+        <div class="profile-btn">
+            <i class="fas fa-user-circle"></i>
+        </div>
+
+        <div class="profile-dropdown" id="profileMenu">
+            <a href="#">Subscription Plan</a>
+            <a href="#">Help</a>
+            <a href="#">Change Password</a>
+            <a href="#">Log out</a>
+        </div>
+    </div>
+
+</nav>
+
+<div class="content">
+    <h2>Welcome to LaunBreeze Dashboard</h2>
+    <p>Page content will be added here...</p>
+</div>
+
+</div>
+
+<script>
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const wrapper = document.getElementById("mainWrapper");
+
+    sidebar.classList.toggle("closed");
+    wrapper.classList.toggle("full");
+}
+
+function toggleProfile() {
+    const menu = document.getElementById("profileMenu");
+    menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+}
+
+document.addEventListener("click", function(event) {
+    const profile = document.querySelector(".profile");
+    const menu = document.getElementById("profileMenu");
+
+    if (!profile.contains(event.target)) {
+        menu.style.display = "none";
+    }
+});
+</script>
+
+</body>
+</html>
