@@ -67,5 +67,15 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+document.getElementById("submitBtn").addEventListener("click", function(e) {
+    e.preventDefault(); // stop form from reloading page
+
+    // OPTIONAL: you can add validation here later
+
+    // Redirect to dashboard
+    window.location.href = "dashboard.html";
+});
+</script>
 </body>
 </html>
