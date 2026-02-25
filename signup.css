@@ -1,0 +1,38 @@
+/* SIGNUP SPECIFIC */
+
+.terms-group {
+    margin: 10px 0 14px 0;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.remember-me input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #60a5fa;
+    cursor: pointer;
+}
+
+.remember-me a {
+    color: #93c5fd;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.remember-me a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+/* Allow scroll for signup page */
+body {
+    overflow-y: auto;
+}

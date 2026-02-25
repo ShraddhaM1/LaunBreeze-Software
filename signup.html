@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LaunBreeze | Sign Up</title>
-    <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="common.css">
+<link rel="stylesheet" href="signup.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -28,12 +29,12 @@
             </div>
 
             <form id="signupForm">
-                <!-- Full Name -->
+                <!-- User Name -->
                 <div class="input-group">
                     <div class="input-wrapper ripple-container">
                         <i class="fas fa-user input-icon"></i>
-                        <input type="text" id="fullname" placeholder=" " required>
-                        <label for="fullname">Full Name</label>
+                        <input type="text" id="username" placeholder=" " required>
+                        <label for="username">Username</label>
                         <div class="input-glow"></div>
                     </div>
                 </div>
@@ -68,8 +69,16 @@
                     </div>
                 </div>
 
-
-
+<!-- Terms & Conditions -->
+<!-- Terms & Conditions -->
+<div class="terms-group">
+    <label class="remember-me">
+        <input type="checkbox" id="terms" required>
+        <span>
+            I agree to <a href="terms.html" >Terms & Conditions</a>
+        </span>
+    </label>
+</div>
                 <!-- CREATE ACCOUNT BUTTON - NOW VISIBLE -->
                 <button type="submit" class="gradient-btn">
                     <span class="btn-text">Create Account</span>
