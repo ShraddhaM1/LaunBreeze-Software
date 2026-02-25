@@ -1,45 +1,217 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Print QR Tags</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { margin:0; font-family: 'Inter', sans-serif; background:#f4f6f9; }
-.top-bar { background:#cfe3f1; padding:10px; text-align:center; color:#2c5d8a; }
-.container { padding:40px 60px; }
-.form-box {
-    background:white;
-    padding:30px;
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-    width:400px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
-input, button, textarea {
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-    border:1px solid #ccc;
-    border-radius:6px;
+
+body{
+    background:#f3f3f3;
 }
-button {
-    background:#2d89ef;
+
+/* HEADER */
+.header{
+    background:#3e7cb1;
     color:white;
-    border:none;
-    cursor:pointer;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:18px;
 }
-button:hover { background:#1b5fa7; }
+
+.date-range{
+    background:#2f5d8c;
+    padding:6px 12px;
+    border-radius:4px;
+    font-size:14px;
+}
+
+/* FILTER BAR */
+.filter-bar{
+    background:#e5e5e5;
+    padding:15px 20px;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    border:1px solid #ccc;
+    border-radius:4px;
+    background:white;
+}
+
+.search-box input{
+    border:none;
+    padding:8px 10px;
+    outline:none;
+    width:180px;
+}
+
+select{
+    padding:8px 10px;
+    border-radius:4px;
+    border:1px solid #4aa3df;
+    min-width:120px;
+}
+
+button{
+    padding:8px 20px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.preview-btn{
+    background:#3e7cb1;
+    color:white;
+}
+
+.print-btn{
+    background:#2f5d8c;
+    color:white;
+}
+
+/* TABLE */
+.table-wrapper{
+    padding:15px 20px;
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:900px;
+}
+
+thead{
+    background:#cfcfcf;
+}
+
+th, td{
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:left;
+}
+
+tbody tr:nth-child(even){
+    background:#f0f0f0;
+}
+
+.checkbox-col{
+    width:40px;
+    text-align:center;
+}
 </style>
 </head>
+
 <body>
 
-<div class="top-bar">Print QR Tags</div>
+<!-- HEADER -->
+<div class="header">
+    <div>Print QR Tags</div>
+    <div class="date-range">📅 11 Feb 2026 - 25 Feb 2026</div>
+</div>
 
-<div class="container">
-<div class="form-box">
-<label>Order Number</label>
-<input type="text" placeholder="Enter Order No">
-<button>Print QR</button>
+<!-- FILTER BAR -->
+<div class="filter-bar">
+
+    <div class="search-box">
+        <input type="text" placeholder="Search Order">
+    </div>
+
+    <select>
+        <option>Invoice No</option>
+    </select>
+
+    <select>
+        <option>9</option>
+    </select>
+
+    <select>
+        <option>All</option>
+    </select>
+
+    <button class="preview-btn">Preview</button>
+    <button class="print-btn">Print</button>
+
 </div>
+
+<!-- TABLE -->
+<div class="table-wrapper">
+
+<table>
+<thead>
+<tr>
+    <th class="checkbox-col"><input type="checkbox" onclick="toggleAll(this)"></th>
+    <th>S No</th>
+    <th>BarCode</th>
+    <th>Garment</th>
+    <th>Remark</th>
+    <th>Color</th>
+    <th>Service</th>
+    <th>Customer</th>
+</tr>
+</thead>
+
+<tbody id="tableBody">
+
+<tr>
+<td class="checkbox-col"><input type="checkbox"></td>
+<td>1</td>
+<td>*9-1-1*</td>
+<td>Saree</td>
+<td></td>
+<td></td>
+<td>DC</td>
+<td>Rahul Nikam | Wakad Pune</td>
+</tr>
+
+<tr>
+<td class="checkbox-col"><input type="checkbox"></td>
+<td>2</td>
+<td>*9-2-1*</td>
+<td>Saree</td>
+<td></td>
+<td></td>
+<td>DC</td>
+<td>Rahul Nikam | Wakad Pune</td>
+</tr>
+
+<tr>
+<td class="checkbox-col"><input type="checkbox"></td>
+<td>3</td>
+<td>*9-3-1*</td>
+<td>Pants</td>
+<td></td>
+<td></td>
+<td>DC</td>
+<td>Rahul Nikam | Wakad Pune</td>
+</tr>
+
+</tbody>
+</table>
+
 </div>
+
+<script>
+function toggleAll(source){
+    const checkboxes = document.querySelectorAll('#tableBody input[type="checkbox"]');
+    checkboxes.forEach(cb => cb.checked = source.checked);
+}
+</script>
 
 </body>
 </html>

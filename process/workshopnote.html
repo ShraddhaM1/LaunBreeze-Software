@@ -1,46 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Workshop Note</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { margin:0; font-family:'Inter', sans-serif; background:#f4f6f9; }
-.top-bar { background:#343a40; padding:10px; text-align:center; color:white; }
-.container { padding:40px 60px; }
-.form-box {
-    background:white;
-    padding:30px;
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-    width:500px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
-input, textarea, button {
-    width:100%;
+
+body{
+    background:#f3f3f3;
+}
+
+/* TOP ALERT */
+.alert-bar{
+    background:#d9e6ef;
+    color:#2f6ea5;
     padding:10px;
-    margin-top:10px;
-    border-radius:6px;
-    border:1px solid #ccc;
+    text-align:center;
+    font-size:14px;
+    position:relative;
 }
-button {
-    background:#343a40;
+
+.alert-bar span{
+    position:absolute;
+    right:15px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
     color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#ffffff;
+    padding:6px 10px;
+    border-radius:4px;
+    color:#333;
+    font-size:14px;
+}
+
+.header-right select{
     border:none;
+    outline:none;
+    font-size:14px;
+    background:transparent;
+}
+
+/* CONTENT AREA */
+.content{
+    height:calc(100vh - 110px);
+    background:#f8f8f8;
+    padding:20px;
+    overflow-y:auto;
 }
 </style>
 </head>
+
 <body>
 
-<div class="top-bar">Add Workshop Note</div>
-
-<div class="container">
-<div class="form-box">
-<label>Order Number</label>
-<input type="text" placeholder="Enter Order No">
-
-<label>Note</label>
-<textarea rows="4" placeholder="Enter workshop instructions..."></textarea>
-
-<button>Save Note</button>
+<!-- ALERT BAR -->
+<div class="alert-bar">
+    You have <b>2</b> pending pick up requests.
+    <span onclick="this.parentElement.style.display='none'">×</span>
 </div>
+
+<!-- HEADER -->
+<div class="header">
+    <div>Workshop Note</div>
+
+    <div class="header-right">
+        📅
+        <select>
+            <option>25 Feb 2026 - 25 Feb 2026</option>
+            <option>24 Feb 2026 - 25 Feb 2026</option>
+            <option>Last 7 Days</option>
+        </select>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+    <!-- Future content goes here -->
 </div>
 
 </body>

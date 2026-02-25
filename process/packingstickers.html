@@ -1,201 +1,256 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Print QR Tags</title>
+<meta charset="UTF-8">
+<title>Print Sticker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    background: #f4f6f9;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
 
-.container {
-    padding: 40px;
+body{
+    background:#f3f3f3;
 }
 
-h2 {
-    text-align: center;
-    margin-bottom: 20px;
+/* TOP FILTER BAR */
+.top-bar{
+    padding:15px;
+    display:flex;
+    align-items:center;
+    gap:15px;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: white;
+input, select{
+    padding:8px 10px;
+    border-radius:4px;
+    border:1px solid #4aa3df;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-    font-size: 13px;
+button{
+    padding:8px 16px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
 }
 
-th {
-    background-color: #2d89ef;
-    color: white;
+.print-btn{
+    margin-left:auto;
+    background:#999;
+    color:white;
 }
 
-tr:nth-child(even) {
-    background-color: #f9f9f9;
+.refresh-btn{
+    background:#e2e2e2;
 }
 
-.barcode {
-    font-family: "Libre Barcode 39", cursive;
-    font-size: 20px;
+/* COUNTERS */
+.counter-bar{
+    display:flex;
+    gap:15px;
+    padding:0 15px 10px 15px;
+}
+
+.counter{
+    background:#7a7a7a;
+    color:white;
+    padding:10px 30px;
+    border-radius:4px;
+    font-size:18px;
+}
+
+/* MAIN SECTION */
+.main-section{
+    display:flex;
+    gap:15px;
+    padding:15px;
+}
+
+/* LEFT & RIGHT PANELS */
+.panel{
+    flex:1;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:6px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+.panel-header{
+    background:#7a7a7a;
+    color:white;
+    padding:8px;
+    font-size:14px;
+}
+
+.panel-body{
+    flex:1;
+    overflow-y:auto;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:8px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+}
+
+tbody tr:nth-child(even){
+    background:#f2f2f2;
+}
+
+/* MOVE BUTTONS */
+.move-section{
+    width:120px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.move-section button{
+    width:70px;
+    background:#b5b5b5;
+    color:white;
+    font-weight:bold;
+}
+
+.move-section button.primary{
+    background:#4aa3df;
 }
 </style>
-
-<!-- Barcode Font -->
-<link href="https://fonts.googleapis.com/css2?family=Libre+Barcode+39&display=swap" rel="stylesheet">
-
 </head>
 
 <body>
 
-<div class="container">
+<!-- TOP BAR -->
+<div class="top-bar">
+    <input type="text" placeholder="Search order/barcode">
+    <input type="text" placeholder="Due date">
+    <button class="refresh-btn">Refresh</button>
+    <button class="print-btn">Print Sticker</button>
+</div>
 
-<h2>QR Tag Sheet</h2>
+<!-- COUNTERS -->
+<div class="counter-bar">
+    <div class="counter" id="leftCount">0</div>
+    <div class="counter" id="rightCount">0</div>
+</div>
 
-<table>
-<thead>
-<tr>
-<th>S No</th>
-<th>BarCode</th>
-<th>Garment</th>
-<th>Remark</th>
-<th>Color</th>
-<th>Service</th>
-<th>Customer</th>
-</tr>
-</thead>
+<!-- MAIN SECTION -->
+<div class="main-section">
 
-<tbody>
-<tr>
-<td>1</td>
-<td class="barcode">*9-1-1*</td>
-<td>Saree</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
+    <!-- LEFT PANEL -->
+    <div class="panel">
+        <div class="panel-header">Available Garments</div>
+        <div class="panel-body">
+            <table>
+                <tbody id="leftTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-<tr>
-<td>2</td>
-<td class="barcode">*9-2-1*</td>
-<td>Saree</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
+    <!-- MOVE BUTTONS -->
+    <div class="move-section">
+        <button onclick="moveSelected()"> &gt; </button>
+        <button onclick="removeSelected()"> &lt; </button>
+        <button class="primary" onclick="moveAll()"> &gt;&gt; </button>
+        <button onclick="removeAll()"> &lt;&lt; </button>
+    </div>
 
-<tr>
-<td>3</td>
-<td class="barcode">*9-3-1*</td>
-<td>Saree</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>4</td>
-<td class="barcode">*9-4-1*</td>
-<td>Saree</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>5</td>
-<td class="barcode">*9-5-1*</td>
-<td>Saree</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>6</td>
-<td class="barcode">*9-6-1*</td>
-<td>Pants</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>7</td>
-<td class="barcode">*9-7-1*</td>
-<td>Pants</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>8</td>
-<td class="barcode">*9-8-1*</td>
-<td>Pants</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>9</td>
-<td class="barcode">*9-9-1*</td>
-<td>Shirt</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>10</td>
-<td class="barcode">*9-10-1*</td>
-<td>Shirt</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>11</td>
-<td class="barcode">*9-11-1*</td>
-<td>Shirt</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-<tr>
-<td>12</td>
-<td class="barcode">*9-12-1*</td>
-<td>Shirt</td>
-<td></td>
-<td></td>
-<td>DC</td>
-<td>Rahul Nikam | Wakad Pune</td>
-</tr>
-
-</tbody>
-</table>
+    <!-- RIGHT PANEL -->
+    <div class="panel">
+        <div class="panel-header">
+            Please select some garments(s) from the left section to print stickers for.
+        </div>
+        <div class="panel-body">
+            <table>
+                <tbody id="rightTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
 
 </div>
+
+<script>
+
+const garments = [
+    "Jeans - AMOL GAWALI",
+    "T Shirt - AMOL GAWALI",
+    "Gents Suit Shirt - AMOL GAWALI",
+    "Gents Suit Trouser - AMOL GAWALI",
+    "T Shirt - Rahul Nikam",
+    "Shawl - Rahul Nikam",
+    "Jeans - bhushan"
+];
+
+const leftTable = document.getElementById("leftTable");
+const rightTable = document.getElementById("rightTable");
+
+function renderLeft(){
+    leftTable.innerHTML="";
+    garments.forEach((g,index)=>{
+        leftTable.innerHTML += `
+            <tr>
+                <td><input type="checkbox" data-index="${index}"></td>
+                <td>${g}</td>
+            </tr>
+        `;
+    });
+    updateCount();
+}
+
+function updateCount(){
+    document.getElementById("leftCount").innerText = leftTable.children.length;
+    document.getElementById("rightCount").innerText = rightTable.children.length;
+}
+
+function moveSelected(){
+    const checkboxes = leftTable.querySelectorAll("input:checked");
+    checkboxes.forEach(cb=>{
+        const row = cb.closest("tr");
+        rightTable.appendChild(row);
+    });
+    updateCount();
+}
+
+function removeSelected(){
+    const checkboxes = rightTable.querySelectorAll("input:checked");
+    checkboxes.forEach(cb=>{
+        const row = cb.closest("tr");
+        leftTable.appendChild(row);
+    });
+    updateCount();
+}
+
+function moveAll(){
+    const rows = leftTable.querySelectorAll("tr");
+    rows.forEach(r=> rightTable.appendChild(r));
+    updateCount();
+}
+
+function removeAll(){
+    const rows = rightTable.querySelectorAll("tr");
+    rows.forEach(r=> leftTable.appendChild(r));
+    updateCount();
+}
+
+renderLeft();
+
+</script>
 
 </body>
 </html>

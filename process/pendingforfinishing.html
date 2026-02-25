@@ -1,48 +1,295 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <title>Pending for Finishing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { margin:0; font-family:'Inter', sans-serif; background:#f4f6f9; }
-.top-bar { background:#ffc107; padding:10px; text-align:center; color:#333; }
-.container { padding:40px 60px; }
-.table-box {
-    background:white;
-    padding:30px;
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
-table {
+
+body{
+    background:#f2f2f2;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header select{
+    padding:6px 10px;
+    border-radius:4px;
+}
+
+/* FILTER BAR */
+.filters{
+    padding:15px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+input, select{
+    padding:8px;
+    border:1px solid #4aa3df;
+    border-radius:4px;
+}
+
+button{
+    padding:8px 15px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.refresh-btn{
+    background:#e6e6e6;
+}
+
+.sms-btn{
+    background:#7f8c8d;
+    color:white;
+}
+
+.print-btn{
+    background:#c8c8c8;
+}
+
+.ready-btn{
+    background:#999;
+    color:white;
+}
+
+/* COUNTERS */
+.counter-bar{
+    display:flex;
+    gap:20px;
+    padding:0 15px 15px 15px;
+}
+
+.counter{
+    background:#7a7a7a;
+    color:white;
+    padding:10px 40px;
+    border-radius:4px;
+    font-size:20px;
+}
+
+/* MAIN SECTION */
+.main{
+    display:flex;
+    gap:15px;
+    padding:15px;
+}
+
+/* PANELS */
+.panel{
+    flex:1;
+    background:white;
+    border-radius:6px;
+    border:1px solid #ccc;
+    display:flex;
+    flex-direction:column;
+}
+
+.panel-header{
+    background:#7a7a7a;
+    color:white;
+    padding:8px;
+}
+
+.panel-body{
+    flex:1;
+    overflow-y:auto;
+}
+
+/* TABLE */
+table{
     width:100%;
     border-collapse:collapse;
 }
-th, td {
-    padding:10px;
-    border-bottom:1px solid #ddd;
+
+th, td{
+    padding:8px;
+    border-bottom:1px solid #eee;
+    text-align:left;
 }
-th { background:#f8f9fa; }
+
+tbody tr:nth-child(even){
+    background:#f3f3f3;
+}
+
+/* MOVE SECTION */
+.move-section{
+    width:130px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.move-section button{
+    width:70px;
+    background:#b5b5b5;
+    color:white;
+    font-weight:bold;
+}
+
+.move-section button.primary{
+    background:#4aa3df;
+}
+
+.return-btn{
+    background:#e07a7a;
+    width:100%;
+}
 </style>
 </head>
+
 <body>
 
-<div class="top-bar">Orders Pending for Finishing</div>
+<div class="header">
+    <div>Pending for Finishing - Mark all garments that are ready to be delivered</div>
+    <div>
+        <select>
+            <option>Mark Garment Ready</option>
+        </select>
+    </div>
+</div>
 
-<div class="container">
-<div class="table-box">
-<table>
-<tr>
-<th>Order No</th>
-<th>Customer</th>
-<th>Status</th>
-</tr>
-<tr>
-<td>1001</td>
-<td>John</td>
-<td>Pending</td>
-</tr>
-</table>
+<div class="filters">
+    <input type="text" placeholder="Search order/barcode">
+    <select>
+        <option>All - Services</option>
+    </select>
+    <input type="text" placeholder="Due date">
+    <button class="refresh-btn">Refresh</button>
+    <button class="sms-btn">SMS ✓</button>
+    <button class="print-btn">Print Sticker</button>
+    <button class="ready-btn" id="readyBtn" disabled>Ready</button>
 </div>
+
+<div class="counter-bar">
+    <div class="counter" id="leftCount">0</div>
+    <div class="counter" id="rightCount">0</div>
 </div>
+
+<div class="main">
+
+    <!-- LEFT PANEL -->
+    <div class="panel">
+        <div class="panel-header">Pending Garments</div>
+        <div class="panel-body">
+            <table>
+                <tbody id="leftTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MOVE SECTION -->
+    <div class="move-section">
+        <button class="return-btn">Return Garment</button>
+        <button onclick="moveSelected()">></button>
+        <button onclick="removeSelected()"><</button>
+        <button class="primary" onclick="moveAll()">>></button>
+        <button onclick="removeAll()"><<</button>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="panel">
+        <div class="panel-header">
+            There are no pending garment to be pending for finishing.
+        </div>
+        <div class="panel-body">
+            <table>
+                <tbody id="rightTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const garments = [
+    "Order 1 - Jeans - Mr AMOL GAWALI",
+    "Order 1 - Jeans - Mr AMOL GAWALI",
+    "Order 1 - Jeans - Mr AMOL GAWALI"
+];
+
+const leftTable = document.getElementById("leftTable");
+const rightTable = document.getElementById("rightTable");
+const readyBtn = document.getElementById("readyBtn");
+
+function renderLeft(){
+    leftTable.innerHTML="";
+    garments.forEach(g=>{
+        leftTable.innerHTML += `
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>${g}</td>
+        </tr>
+        `;
+    });
+    updateCount();
+}
+
+function updateCount(){
+    document.getElementById("leftCount").innerText = leftTable.children.length;
+    document.getElementById("rightCount").innerText = rightTable.children.length;
+
+    if(rightTable.children.length > 0){
+        readyBtn.disabled = false;
+        readyBtn.style.background = "#4aa3df";
+    } else {
+        readyBtn.disabled = true;
+        readyBtn.style.background = "#999";
+    }
+}
+
+function moveSelected(){
+    const selected = leftTable.querySelectorAll("input:checked");
+    selected.forEach(cb=>{
+        rightTable.appendChild(cb.closest("tr"));
+    });
+    updateCount();
+}
+
+function removeSelected(){
+    const selected = rightTable.querySelectorAll("input:checked");
+    selected.forEach(cb=>{
+        leftTable.appendChild(cb.closest("tr"));
+    });
+    updateCount();
+}
+
+function moveAll(){
+    const rows = leftTable.querySelectorAll("tr");
+    rows.forEach(r=> rightTable.appendChild(r));
+    updateCount();
+}
+
+function removeAll(){
+    const rows = rightTable.querySelectorAll("tr");
+    rows.forEach(r=> leftTable.appendChild(r));
+    updateCount();
+}
+
+renderLeft();
+
+</script>
 
 </body>
 </html>

@@ -1,44 +1,301 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Receive from Workshop</title>
+<meta charset="UTF-8">
+<title>Receive From Workshop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
-body { margin:0; font-family:'Inter', sans-serif; background:#f4f6f9; }
-.top-bar { background:#cfe3f1; padding:10px; text-align:center; color:#2c5d8a; }
-.container { padding:40px 60px; }
-.form-box {
-    background:white;
-    padding:30px;
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-    width:400px;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
 }
-input, button {
-    width:100%;
-    padding:10px;
-    margin-top:10px;
+
+body{
+    background:#f2f2f2;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header select{
+    padding:6px 10px;
+    border-radius:4px;
+}
+
+/* FILTER BAR */
+.filters{
+    padding:15px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+input, select{
+    padding:8px;
+    border:1px solid #4aa3df;
+    border-radius:4px;
+}
+
+button{
+    padding:8px 15px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.refresh-btn{
+    background:#e6e6e6;
+}
+
+.sms-btn{
+    background:#7f8c8d;
+    color:white;
+}
+
+.print-btn{
+    background:#c8c8c8;
+}
+
+.pending-btn{
+    background:#5fb2c6;
+    color:white;
+}
+
+.ready-btn{
+    background:#2f6ea5;
+    color:white;
+}
+
+/* COUNTER */
+.counter-bar{
+    display:flex;
+    gap:20px;
+    padding:0 15px 15px 15px;
+}
+
+.counter{
+    background:#7a7a7a;
+    color:white;
+    padding:10px 40px;
+    border-radius:4px;
+    font-size:20px;
+}
+
+/* MAIN SECTION */
+.main{
+    display:flex;
+    gap:15px;
+    padding:15px;
+}
+
+/* PANELS */
+.panel{
+    flex:1;
+    background:white;
     border-radius:6px;
     border:1px solid #ccc;
+    display:flex;
+    flex-direction:column;
 }
-button {
-    background:#17a2b8;
+
+.panel-header{
+    background:#7a7a7a;
     color:white;
-    border:none;
+    padding:8px;
 }
-button:hover { background:#117a8b; }
+
+.panel-body{
+    flex:1;
+    overflow-y:auto;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:8px;
+    border-bottom:1px solid #eee;
+    text-align:left;
+}
+
+tbody tr:nth-child(even){
+    background:#f3f3f3;
+}
+
+/* MOVE SECTION */
+.move-section{
+    width:130px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+}
+
+.move-section button{
+    width:70px;
+    background:#b5b5b5;
+    color:white;
+    font-weight:bold;
+}
+
+.move-section button.primary{
+    background:#4aa3df;
+}
+
+.return-btn{
+    background:#e07a7a;
+    width:100%;
+}
 </style>
 </head>
+
 <body>
 
-<div class="top-bar">Receive from Workshop</div>
+<div class="header">
+    <div>Receive From Workshop - Mark all cloths that are READY TO BE DELIVERED or Pending for FINISHING</div>
+    <div>
+        <select>
+            <option>Mark Garment Ready</option>
+        </select>
+    </div>
+</div>
 
-<div class="container">
-<div class="form-box">
-<label>Order Number</label>
-<input type="text" placeholder="Enter Order No">
-<button>Receive</button>
+<div class="filters">
+    <input type="text" placeholder="Search order/barcode">
+    <select><option>All</option></select>
+    <select><option>All - Service</option></select>
+    <input type="text" placeholder="Due date">
+    <button class="refresh-btn">Refresh</button>
+    <button class="sms-btn">SMS ✓</button>
+    <button class="print-btn">Print Sticker</button>
+    <button class="pending-btn">Pending for Finishing</button>
+    <button class="ready-btn" id="readyBtn" disabled>Ready</button>
 </div>
+
+<div class="counter-bar">
+    <div class="counter" id="leftCount">0</div>
+    <div class="counter" id="rightCount">0</div>
 </div>
+
+<div class="main">
+
+    <!-- LEFT PANEL (Received Items) -->
+    <div class="panel">
+        <div class="panel-header">
+            No garment available to display, Please select appropriate filter.
+        </div>
+        <div class="panel-body">
+            <table>
+                <tbody id="leftTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- MOVE SECTION -->
+    <div class="move-section">
+        <button class="return-btn">Return Garment</button>
+        <button onclick="moveSelected()">></button>
+        <button onclick="removeSelected()"><</button>
+        <button class="primary" onclick="moveAll()">>></button>
+        <button onclick="removeAll()"><<</button>
+    </div>
+
+    <!-- RIGHT PANEL (Workshop Items) -->
+    <div class="panel">
+        <div class="panel-header">Garments In Workshop</div>
+        <div class="panel-body">
+            <table>
+                <tbody id="rightTable"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const garments = [
+    "Order 3 - T Shirt - Mr AMOL GAWALI",
+    "Order 3 - Gents Suit Shirt - Mr AMOL GAWALI",
+    "Order 4 - T Shirt - Rahul Nikam",
+    "Order 5 - Shawl - Rahul Nikam"
+];
+
+const leftTable = document.getElementById("leftTable");
+const rightTable = document.getElementById("rightTable");
+const readyBtn = document.getElementById("readyBtn");
+
+function renderRight(){
+    rightTable.innerHTML="";
+    garments.forEach(g=>{
+        rightTable.innerHTML += `
+        <tr>
+            <td><input type="checkbox"></td>
+            <td>${g}</td>
+        </tr>
+        `;
+    });
+    updateCount();
+}
+
+function updateCount(){
+    document.getElementById("leftCount").innerText = leftTable.children.length;
+    document.getElementById("rightCount").innerText = rightTable.children.length;
+
+    if(leftTable.children.length > 0){
+        readyBtn.disabled = false;
+        readyBtn.style.background = "#2f6ea5";
+    } else {
+        readyBtn.disabled = true;
+        readyBtn.style.background = "#999";
+    }
+}
+
+function moveSelected(){
+    const selected = rightTable.querySelectorAll("input:checked");
+    selected.forEach(cb=>{
+        leftTable.appendChild(cb.closest("tr"));
+    });
+    updateCount();
+}
+
+function removeSelected(){
+    const selected = leftTable.querySelectorAll("input:checked");
+    selected.forEach(cb=>{
+        rightTable.appendChild(cb.closest("tr"));
+    });
+    updateCount();
+}
+
+function moveAll(){
+    const rows = rightTable.querySelectorAll("tr");
+    rows.forEach(r=> leftTable.appendChild(r));
+    updateCount();
+}
+
+function removeAll(){
+    const rows = leftTable.querySelectorAll("tr");
+    rows.forEach(r=> rightTable.appendChild(r));
+    updateCount();
+}
+
+renderRight();
+
+</script>
 
 </body>
 </html>
