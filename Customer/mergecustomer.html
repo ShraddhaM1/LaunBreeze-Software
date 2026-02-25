@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Merge Customer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+/* MAIN WRAPPER */
+.wrapper {
+    width: 95%;
+    margin: 20px auto;
+    border: 1px solid #cfcfcf;
+    background: #fff;
+}
+
+/* TOP HEADER */
+.main-header {
+    background: #3e7cb1;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* SECTION */
+.section {
+    margin: 20px;
+    border: 1px solid #cfdfe8;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+/* SECTION HEADER */
+.section-header {
+    background: #cfe3ef;
+    padding: 12px 20px;
+    font-size: 18px;
+    color: #1b4f72;
+    font-weight: bold;
+}
+
+/* SECTION BODY */
+.section-body {
+    padding: 30px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* CARD */
+.card {
+    background: #f5f5f5;
+    padding: 25px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+.card h3 {
+    margin-bottom: 15px;
+    color: #0b5a8c;
+}
+
+/* INPUT */
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #4aa3df;
+    border-radius: 6px;
+    outline: none;
+    font-size: 15px;
+}
+
+.input-field:focus {
+    box-shadow: 0 0 6px rgba(74,163,223,0.4);
+}
+
+/* BUTTON SECTION */
+.button-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* MERGE BUTTON */
+.merge-btn {
+    background: #d9534f;
+    color: white;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.merge-btn:hover {
+    background: #c9302c;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="main-header">
+        Merge Customer
+    </div>
+
+    <div class="section">
+
+        <div class="section-header">
+            Customer Selection
+        </div>
+
+        <div class="section-body">
+
+            <div class="grid">
+
+                <!-- ORIGINAL CUSTOMER -->
+                <div class="card">
+                    <h3>Orginal Customer</h3>
+                    <input type="text" class="input-field"
+                           placeholder="Enter Orginal Customer">
+                </div>
+
+                <!-- DUPLICATE CUSTOMER -->
+                <div class="card">
+                    <h3>Duplicate Customer</h3>
+                    <input type="text" class="input-field"
+                           placeholder="Enter Duplicate Customer">
+                </div>
+
+            </div>
+
+            <div class="button-section">
+                <button class="merge-btn">
+                    Merge Customer
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Customer Create/Update/Delete</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f2f2f2;
+}
+
+/* MAIN WRAPPER */
+.wrapper {
+    width: 95%;
+    margin: 20px auto;
+    background: #fff;
+    border: 1px solid #cfcfcf;
+}
+
+/* HEADER */
+.header {
+    background: #3e7cb1;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* SEARCH BAR */
+.search-section {
+    padding: 20px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+}
+
+/* FORM GRID */
+.form-container {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    display: flex;
+    align-items: center;
+}
+
+.label-box {
+    background: #e0e0e0;
+    padding: 10px;
+    min-width: 160px;
+    border-radius: 4px 0 0 4px;
+}
+
+.input-field {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-radius: 0 4px 4px 0;
+    outline: none;
+}
+
+/* FULL WIDTH */
+.full-width {
+    grid-column: span 2;
+}
+
+/* TEXTAREA */
+textarea.input-field {
+    height: 70px;
+    resize: none;
+}
+
+/* TOGGLE */
+.toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.toggle input {
+    width: 18px;
+    height: 18px;
+}
+
+/* SAVE BUTTON */
+.save-section {
+    padding: 20px;
+}
+
+.save-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    background: #4aa3df;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background: #3182c3;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .form-container {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <div class="header">
+        Customer Create/Update/Delete
+    </div>
+
+    <div class="search-section">
+        <input type="text" class="search-input"
+               placeholder="Search Customer here to Edit/Delete a Customer">
+    </div>
+
+    <div class="form-container">
+
+        <div class="input-group full-width">
+            <div class="label-box">Customer Code</div>
+            <input type="text" class="input-field" placeholder="Enter Code">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Name</div>
+            <input type="text" class="input-field" placeholder="Name">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Membership ID</div>
+            <input type="text" class="input-field" placeholder="Membership ID">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Barcode</div>
+            <input type="text" class="input-field" placeholder="Barcode">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Birthday</div>
+            <input type="date" class="input-field">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Anniversary</div>
+            <input type="date" class="input-field">
+        </div>
+
+        <div class="input-group full-width">
+            <div class="label-box">Address</div>
+            <textarea class="input-field" placeholder="Address"></textarea>
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Area Location</div>
+            <input type="text" class="input-field" placeholder="Area">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">State</div>
+            <select class="input-field">
+                <option>Select State</option>
+                <option>Maharashtra</option>
+                <option>Delhi</option>
+                <option>Karnataka</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Pin Code</div>
+            <input type="text" class="input-field" placeholder="Pin Code">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Phone</div>
+            <input type="text" class="input-field" placeholder="Phone Number">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Email ID</div>
+            <input type="email" class="input-field" placeholder="Email">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Preference</div>
+            <select class="input-field">
+                <option>NA</option>
+                <option>Flat Pressing</option>
+                <option>No Starch</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Discount (%)</div>
+            <input type="text" class="input-field" placeholder="Default Discount">
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Rate List</div>
+            <select class="input-field">
+                <option>Default</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <div class="label-box">Facebook ID</div>
+            <input type="text" class="input-field">
+        </div>
+
+        <div class="input-group full-width">
+            <div class="label-box">Message on Search Customer</div>
+            <textarea class="input-field"></textarea>
+        </div>
+
+        <div class="input-group full-width">
+            <div class="label-box">Message on Garment Delivery</div>
+            <textarea class="input-field"></textarea>
+        </div>
+
+        <div class="input-group full-width toggle">
+            <input type="checkbox">
+            <label>Enroll in Loyalty Program</label>
+        </div>
+
+    </div>
+
+    <div class="save-section">
+        <button class="save-btn">Save</button>
+    </div>
+
+</div>
+
+</body>
+</html>

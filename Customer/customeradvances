@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Customer Advances</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3e7cb1;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+}
+
+/* CONTENT WRAPPER */
+.container{
+    padding:25px;
+}
+
+/* FILTER BOX */
+.filter-box{
+    display:flex;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.icon-box{
+    background:#d8d8d8;
+    padding:10px 12px;
+    border:1px solid #ccc;
+    border-right:none;
+    border-radius:4px 0 0 4px;
+}
+
+.icon-box::before{
+    content:"👤";
+}
+
+.filter-input{
+    width:400px;
+    padding:10px;
+    border:1px solid #4aa3df;
+    border-radius:0 4px 4px 0;
+    outline:none;
+    font-size:14px;
+}
+
+.filter-input:focus{
+    box-shadow:0 0 6px rgba(74,163,223,0.5);
+}
+
+/* RESULT BOX */
+.result-box{
+    background:#dfe4ea;
+    padding:12px;
+    border:1px solid #c7ccd1;
+    font-size:16px;
+    color:#333;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+Customer Advances
+</div>
+
+<div class="container">
+
+    <div class="filter-box">
+        <div class="icon-box"></div>
+        <input type="text" class="filter-input" placeholder="Filter by customer">
+    </div>
+
+    <div class="result-box">
+        No customer advances record found.
+    </div>
+
+</div>
+
+</body>
+</html>

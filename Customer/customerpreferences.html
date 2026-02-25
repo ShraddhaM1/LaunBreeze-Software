@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Preference</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f3f3f3;
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    margin: 40px auto;
+}
+
+/* TOP CARD */
+.card {
+    background: #fff;
+    border: 1px solid #c8c8c8;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+/* CARD HEADER */
+.card-header {
+    background: #3e7cb1;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* CARD BODY */
+.card-body {
+    padding: 25px 20px;
+}
+
+/* FORM ROW */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    background: #d9d9d9;
+    padding: 12px 15px;
+    border-radius: 5px 0 0 5px;
+    min-width: 200px;
+}
+
+.form-input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #4aa3df;
+    border-left: none;
+    border-radius: 0 5px 5px 0;
+    outline: none;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+    background: #4aa3df;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.save-btn:hover {
+    background: #3182c3;
+}
+
+/* TABLE SECTION */
+.table-card {
+    background: #fff;
+    border: 1px solid #c8c8c8;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* TABLE */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #7a7a7a;
+    color: #fff;
+}
+
+thead th {
+    padding: 12px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background: #f0f4f8;
+}
+
+tbody td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* SELECT LINK */
+.select-link {
+    color: #2b6cb0;
+    text-decoration: none;
+}
+
+.select-link:hover {
+    text-decoration: underline;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- CUSTOMER PREFERENCE FORM -->
+    <div class="card">
+        <div class="card-header">
+            Customer Preference
+        </div>
+
+        <div class="card-body">
+
+            <div class="form-row">
+                <div class="form-label">Customer Preference</div>
+                <input type="text" class="form-input" placeholder="Kindly enter customer preference">
+            </div>
+
+            <button class="save-btn">💾 Save</button>
+
+        </div>
+    </div>
+
+    <!-- PREFERENCE LIST TABLE -->
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:120px;"></th>
+                    <th>Customer Preference</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>Flat Pressing</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>No Starch</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>Light Starch</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>Hard Starch</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>Medium Starch</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>Suit Shirt on Hanger</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>None</td>
+                </tr>
+                <tr>
+                    <td><a href="#" class="select-link">Select</a></td>
+                    <td>NA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

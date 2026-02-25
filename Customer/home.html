@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard UI</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f4f6f9;
+}
+
+/* TOP BANNER */
+.top-banner {
+    background: #d8ecf7;
+    color: #2b6a9a;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+}
+
+/* MAIN CONTAINER */
+.main-container {
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 25px;
+}
+
+/* CARD */
+.card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+}
+
+/* RADIO SECTION */
+.radio-group {
+    margin-bottom: 20px;
+}
+
+.radio-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* SEARCH BAR */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.search-icon {
+    background: #e2e6ea;
+    padding: 12px;
+    border-radius: 6px 0 0 6px;
+}
+
+.search-select {
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-left: none;
+    border-right: none;
+    outline: none;
+}
+
+.search-input {
+    flex: 1;
+    padding: 11px;
+    border: 1px solid #4aa3df;
+    border-radius: 0 6px 6px 0;
+    outline: none;
+}
+
+/* BUTTONS */
+.button-group {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 14px;
+    background: #0d1b2a;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #1b263b;
+}
+
+/* HELP CARD */
+.help-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    text-align: center;
+}
+
+.help-card p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    color: #333;
+}
+
+.help-card a {
+    display: block;
+    margin-bottom: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.support-link {
+    color: #2b6a9a;
+}
+
+.video-link {
+    color: red;
+}
+</style>
+</head>
+
+<body>
+
+
+
+<div class="main-container">
+
+    <!-- SEARCH CARD -->
+    <div class="card">
+
+        <div class="radio-group">
+            <label>
+                <input type="radio" name="searchType" checked>
+                Search Customer (Name, Address, Mobile Number, Membership id or customer id)
+            </label>
+
+            <label>
+                <input type="radio" name="searchType">
+                Search Invoice
+            </label>
+        </div>
+
+        <div class="search-container">
+            <div class="search-icon">🔍</div>
+
+            <select class="search-select">
+                <option>Mobile</option>
+                <option>Name</option>
+                <option>Customer ID</option>
+            </select>
+
+            <input type="text" class="search-input" placeholder="Search">
+        </div>
+
+        <div class="button-group">
+            <button class="btn">ADD NEW CUSTOMER 👤</button>
+            <button class="btn">DAILY DASHBOARD ⏱</button>
+        </div>
+
+    </div>
+
+    <!-- HELP SECTION -->
+    <div class="help-card">
+        <p>
+            Visit helpdesk and watch video tutorials to learn how to effectively use QDC smart software tools.
+            Find what's new, raise and check support tickets, initiate chat, gain in depth configuration knowledge,
+            FAQ and many more.
+        </p>
+
+        <a href="#" class="support-link">Click here to visit support portal</a>
+        <a href="#" class="video-link">How to change order series, watch video</a>
+    </div>
+
+</div>
+
+</body>
+</html>

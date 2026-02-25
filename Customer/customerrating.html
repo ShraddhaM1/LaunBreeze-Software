@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Customer Ratings Report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+/* TOP NOTICE */
+.notice{
+    background:#cfe3ef;
+    text-align:center;
+    padding:8px;
+    font-size:16px;
+    color:#1b4f72;
+}
+
+/* HEADER */
+.header{
+    background:#3e7cb1;
+    color:#fff;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header h2{
+    font-weight:500;
+}
+
+/* FILTERS */
+.filters{
+    display:flex;
+    gap:20px;
+}
+
+.filters select{
+    padding:8px 12px;
+    border-radius:4px;
+    border:1px solid #ccc;
+}
+
+/* TABLE WRAPPER */
+.table-wrapper{
+    padding:20px;
+    overflow-x:auto;   /* Horizontal Scroll */
+}
+
+/* TABLE */
+table{
+    border-collapse:collapse;
+    min-width:1500px; /* force horizontal scroll */
+    width:100%;
+}
+
+thead{
+    background:#7a7a7a;
+    color:#fff;
+    position:sticky;
+    top:0;
+}
+
+th, td{
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:left;
+    white-space:nowrap;
+}
+
+tbody tr:nth-child(even){
+    background:#e9edf2;
+}
+
+/* TOTAL ROW */
+tfoot{
+    background:#d9d9d9;
+    font-weight:bold;
+}
+
+/* RATING CIRCLES */
+.rating{
+    display:flex;
+    gap:5px;
+}
+
+.circle{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    color:white;
+}
+
+.green{ background:#5cb85c; }
+.yellow{ background:#d4b400; }
+.gray{ background:#aaa; }
+
+.star{
+    color:green;
+    font-size:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div class="header">
+    <h2>Customer Ratings Report</h2>
+
+    <div class="filters">
+        <select>
+            <option>Marketing Source - All</option>
+        </select>
+
+        <select>
+            <option>Life Time Ratings - All</option>
+        </select>
+
+        <select>
+            <option>Current Ratings (Last 365 days) - All</option>
+        </select>
+    </div>
+</div>
+
+<div class="table-wrapper">
+
+<table>
+
+<thead>
+<tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>Mobile</th>
+    <th>Life Time Rating</th>
+    <th>Current Rating (Last 365 days)</th>
+    <th>Total Order</th>
+    <th>Total Revenue</th>
+    <th>Total Garment</th>
+    <th>Total Amount/Order</th>
+    <th>Total Amount/Garment</th>
+    <th>Last Order</th>
+    <th>Marketing Source</th>
+    <th>Remarks</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr>
+<td>Rahul Nikam</td>
+<td>Capriccio Residency Wakad Pune</td>
+<td>******6049</td>
+<td>
+    <div class="rating">
+        <div class="circle green">$</div>
+        <div class="circle green">$</div>
+        <div class="circle green">$</div>
+        <div class="circle green">$</div>
+        <div class="circle green">$</div>
+    </div>
+</td>
+<td>
+    <span class="star">★★★★★</span>
+</td>
+<td>4</td>
+<td>1,450.00</td>
+<td>18</td>
+<td>362.50</td>
+<td>80.56</td>
+<td>22 Feb 2026</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>AMOL GAWALI</td>
+<td>Nashik Panchwati</td>
+<td>******1469</td>
+<td>
+    <div class="rating">
+        <div class="circle yellow">$</div>
+        <div class="circle yellow">$</div>
+        <div class="circle yellow">$</div>
+    </div>
+</td>
+<td>
+    <span class="star" style="color:gold;">★★★☆☆</span>
+</td>
+<td>2</td>
+<td>1,062.00</td>
+<td>11</td>
+<td>531.00</td>
+<td>96.55</td>
+<td>29 Aug 2025</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>Sweety Nikam</td>
+<td>Wakad</td>
+<td>******5734</td>
+<td>
+    <div class="rating">
+        <div class="circle gray">$</div>
+        <div class="circle gray">$</div>
+    </div>
+</td>
+<td>
+    <span class="star" style="color:#ccc;">★★☆☆☆</span>
+</td>
+<td>1</td>
+<td>636.00</td>
+<td>5</td>
+<td>636.00</td>
+<td>127.20</td>
+<td>22 Nov 2025</td>
+<td>-</td>
+<td>-</td>
+</tr>
+
+</tbody>
+
+<tfoot>
+<tr>
+<td colspan="5">Total Customers: 3</td>
+<td>7</td>
+<td>3,148.00</td>
+<td>34</td>
+<td>1,529.50</td>
+<td>304.31</td>
+<td colspan="3"></td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+
+</body>
+</html>

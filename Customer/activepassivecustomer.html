@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Active / Passive Customer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f2f2f2;
+}
+
+/* TOP NOTICE */
+.notice{
+    background:#cfe3ef;
+    text-align:center;
+    padding:8px;
+    font-size:16px;
+    color:#1b4f72;
+}
+
+/* HEADER */
+.header{
+    background:#3e7cb1;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+}
+
+/* CONTAINER */
+.container{
+    padding:20px;
+}
+
+/* FILTER */
+.filter-section{
+    margin-bottom:20px;
+}
+
+select{
+    padding:8px 12px;
+    border-radius:4px;
+    border:1px solid #4aa3df;
+    font-size:14px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#7a7a7a;
+    color:white;
+}
+
+th, td{
+    padding:10px;
+    border:1px solid #ccc;
+    text-align:left;
+}
+
+tbody tr:nth-child(even){
+    background:#e9edf2;
+}
+
+tfoot{
+    background:#d9d9d9;
+    font-weight:bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="notice">
+You have 2 pending pick up requests.
+</div>
+
+<div class="header">
+Active / Passive Customer
+</div>
+
+<div class="container">
+
+    <div class="filter-section">
+        <label>Customer </label>
+        <select id="customerType">
+            <option value="active">Active</option>
+            <option value="passive">Passive</option>
+        </select>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Email Id</th>
+                <th>Last Order Date</th>
+            </tr>
+        </thead>
+
+        <tbody id="customerTable">
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="5" id="totalCount">Total = 0</td>
+            </tr>
+        </tfoot>
+    </table>
+
+</div>
+
+<script>
+
+const customers = [
+    // ACTIVE CUSTOMERS
+    {name:"Vivek Kumar Saini", address:"Noida Sector 62", mobile:"******5331", email:"vivek.saini@deecoup.com", lastOrder:"12 Jan 2026", status:"active"},
+    {name:"Ashwani Kataria", address:"C2 Sec 1 Noida", mobile:"******5691", email:"ashwani@email.com", lastOrder:"03 Feb 2026", status:"active"},
+    {name:"Sandeep Khairnar", address:"Malegaon Nashik", mobile:"******9393", email:"sandeep@email.com", lastOrder:"22 Feb 2026", status:"active"},
+
+    // PASSIVE CUSTOMERS
+    {name:"Rohan Patil", address:"Pune Wakad", mobile:"******8822", email:"rohan@email.com", lastOrder:"10 Aug 2024", status:"passive"},
+    {name:"Neha Sharma", address:"Delhi Rohini", mobile:"******7711", email:"neha@email.com", lastOrder:"05 May 2024", status:"passive"},
+    {name:"Amit Joshi", address:"Nashik Panchwati", mobile:"******6622", email:"amit@email.com", lastOrder:"18 Mar 2024", status:"passive"}
+];
+
+const dropdown = document.getElementById("customerType");
+const tableBody = document.getElementById("customerTable");
+const totalCount = document.getElementById("totalCount");
+
+function loadCustomers(type){
+    tableBody.innerHTML = "";
+
+    const filtered = customers.filter(c => c.status === type);
+
+    filtered.forEach(c => {
+        const row = `
+            <tr>
+                <td>${c.name}</td>
+                <td>${c.address}</td>
+                <td>${c.mobile}</td>
+                <td>${c.email}</td>
+                <td>${c.lastOrder}</td>
+            </tr>
+        `;
+        tableBody.innerHTML += row;
+    });
+
+    totalCount.innerText = "Total = " + filtered.length;
+}
+
+// Initial Load
+loadCustomers("active");
+
+// On Change
+dropdown.addEventListener("change", function(){
+    loadCustomers(this.value);
+});
+
+</script>
+
+</body>
+</html>
