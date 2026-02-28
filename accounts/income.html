@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Receipt Entry</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+}
+
+/* FORM SECTION */
+.form-section{
+    background:#e9eef3;
+    padding:25px;
+    border-bottom:1px solid #ccc;
+}
+
+.form-row{
+    display:flex;
+    gap:20px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+}
+
+label{
+    width:140px;
+    font-weight:bold;
+    align-self:center;
+}
+
+input, select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    min-width:300px;
+}
+
+textarea{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    min-width:300px;
+}
+
+.btn{
+    padding:10px 18px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.primary{
+    background:#3b78a8;
+    color:white;
+}
+
+.secondary{
+    background:#6c757d;
+    color:white;
+}
+
+.action-buttons{
+    margin-top:10px;
+    display:flex;
+    gap:15px;
+}
+
+/* FILTER SECTION */
+.filter-section{
+    background:white;
+    padding:20px;
+    border-top:1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+/* EMPTY MESSAGE */
+.empty-message{
+    margin:20px;
+    padding:15px;
+    background:#e1e6ed;
+    border:1px solid #c5cbd4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Receipt Entry</div>
+
+<div class="form-section">
+
+    <div class="form-row">
+        <label>Date</label>
+        <input type="text" value="25 Feb 2026">
+    </div>
+
+    <div class="form-row">
+        <label>Received From</label>
+        <select>
+            <option>Cheque Received</option>
+            <option>Cash</option>
+            <option>UPI</option>
+            <option>Bank Transfer</option>
+        </select>
+
+        <button class="btn primary">Add new Ledger</button>
+    </div>
+
+    <div class="form-row">
+        <label>Amount</label>
+        <input type="number" placeholder="Enter Amount">
+    </div>
+
+    <div class="form-row">
+        <label>Narration</label>
+        <textarea rows="3" placeholder="Enter description"></textarea>
+    </div>
+
+    <div class="action-buttons">
+        <button class="btn primary">Save</button>
+        <button class="btn secondary">Reset</button>
+    </div>
+
+</div>
+
+<div class="filter-section">
+    <label>Date Filter</label>
+    <input type="text" value="25 Feb 2026 - 25 Feb 2026">
+
+    <label>Ledger Name</label>
+    <select>
+        <option>All</option>
+        <option>Cheque Received</option>
+        <option>Cash</option>
+    </select>
+
+    <button class="btn primary">Show</button>
+    <button class="btn secondary">Reset</button>
+</div>
+
+<div class="empty-message">
+    There are no data records to display.
+</div>
+
+</body>
+</html>

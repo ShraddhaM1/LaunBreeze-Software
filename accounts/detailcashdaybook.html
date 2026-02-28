@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Detail Cash Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* ALERT BAR */
+.alert{
+    background:#e60000;
+    color:white;
+    text-align:center;
+    padding:12px;
+    font-weight:bold;
+    font-size:16px;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:20px;
+}
+
+/* DATE PICKER */
+.date-picker{
+    background:white;
+    padding:6px 12px;
+    border-radius:4px;
+    color:#333;
+    font-size:14px;
+}
+
+/* CONTENT */
+.content{
+    padding:30px;
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:6px;
+    overflow:hidden;
+}
+
+th{
+    background:#7a7a7a;
+    color:white;
+    padding:12px;
+    text-align:left;
+}
+
+td{
+    padding:12px;
+    border-bottom:1px solid #eee;
+}
+
+.empty-row{
+    text-align:center;
+    padding:30px;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<div class="alert">
+    No detail cash book entry found.
+</div>
+
+<div class="header">
+    <div>Detail Cash Book</div>
+    <div class="date-picker">
+        📅 25 Feb 2026 - 25 Feb 2026
+    </div>
+</div>
+
+<div class="content">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Transaction ID</th>
+                <th>Description</th>
+                <th>Payment Mode</th>
+                <th>Credit</th>
+                <th>Debit</th>
+                <th>Balance</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="7" class="empty-row">
+                    No records available for selected date.
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Drop Off Scheduler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+}
+
+/* SEARCH TABS SECTION */
+.search-section{
+    background:#e9eef3;
+    padding:25px;
+}
+
+.tabs{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.tab{
+    padding:12px 25px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    background:#d9d9d9;
+}
+
+.tab.active{
+    background:#3b78a8;
+    color:white;
+}
+
+.search-box{
+    display:flex;
+    align-items:center;
+    max-width:600px;
+}
+
+.search-box input{
+    flex:1;
+    padding:12px;
+    border:1px solid #4aa3df;
+    border-left:none;
+    outline:none;
+}
+
+.search-icon{
+    background:#ddd;
+    padding:12px 15px;
+}
+
+/* FILTER BAR */
+.filter-bar{
+    background:white;
+    padding:15px 20px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.filter-bar select,
+.filter-bar input{
+    padding:8px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.counter{
+    padding:12px 25px;
+    color:white;
+    font-weight:bold;
+}
+
+.overdue{
+    background:#f39c12;
+}
+
+.upcoming{
+    background:#2ecc71;
+}
+
+/* EMPTY MESSAGE */
+.empty-message{
+    margin:20px;
+    padding:15px;
+    background:#e1e6ed;
+    border:1px solid #c5cbd4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Drop off Scheduler</div>
+
+<div class="search-section">
+
+    <div class="tabs">
+        <button class="tab active">Search Customer</button>
+        <button class="tab">Search Invoice</button>
+        <button class="tab">Search Pick Up Number</button>
+    </div>
+
+    <div class="search-box">
+        <div class="search-icon">🔍</div>
+        <input type="text" placeholder="Search">
+    </div>
+
+</div>
+
+<div class="filter-bar">
+
+    <select>
+        <option>01 Feb 2026 - 28 Feb 2026</option>
+    </select>
+
+    <input type="text" placeholder="Filter by area">
+
+    <input type="text" placeholder="Filter by pincode">
+
+    <select>
+        <option>Pending</option>
+    </select>
+
+    <div class="counter overdue">OVERDUE 1</div>
+    <div class="counter upcoming">UPCOMING 0</div>
+
+</div>
+
+<div class="empty-message">
+    There are no data records to display.
+</div>
+
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Redemption</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    padding:30px;
+}
+
+/* PAGE TITLE */
+.page-title{
+    font-size:28px;
+    font-weight:600;
+    margin-bottom:30px;
+}
+
+/* FILTER BAR */
+.filter-bar{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    border:1px solid #e0e0e0;
+}
+
+.filter-left button{
+    background:#0f2c54;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.filter-right{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.icon-btn{
+    background:#f0f2f5;
+    border:1px solid #ddd;
+    padding:8px 12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.view-btn{
+    background:white;
+    border:1px solid #ddd;
+    padding:8px 16px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* TABLE */
+.table-container{
+    background:white;
+    border-radius:8px;
+    border:1px solid #e0e0e0;
+    overflow:hidden;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+thead{
+    background:#e9edf2;
+}
+
+th{
+    text-align:left;
+    padding:15px;
+    font-weight:600;
+    color:#4a5b6c;
+}
+
+td{
+    padding:40px 15px;
+    text-align:center;
+    color:#555;
+    border-top:1px solid #eee;
+}
+
+/* FOOTER */
+.table-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px;
+    border-top:1px solid #eee;
+    background:#fafafa;
+}
+
+.pagination{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+select{
+    padding:6px 10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-title">Redemption</div>
+
+<div class="filter-bar">
+    <div class="filter-left">
+        <button>All</button>
+    </div>
+
+    <div class="filter-right">
+        <button class="icon-btn">🔍</button>
+        <button class="icon-btn">☰</button>
+        <button class="view-btn">View</button>
+    </div>
+</div>
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Coupon Code</th>
+                <th>Total Redemptions</th>
+                <th>Order Value</th>
+                <th>Discount</th>
+                <th>ROI</th>
+                <th>Expiry Date</th>
+                <th>Total Transactions</th>
+                <th>Applicable on First Order - New Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="8">No results.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="table-footer">
+        <div>No results.</div>
+
+        <div class="pagination">
+            <span>Rows per page</span>
+            <select>
+                <option>10</option>
+                <option>25</option>
+                <option>50</option>
+            </select>
+
+            <span>Page 1 of 1</span>
+
+            <button class="icon-btn">◀</button>
+            <button class="icon-btn">▶</button>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Assign To Driver</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+}
+
+/* LAYOUT */
+.container{
+    display:flex;
+}
+
+/* LEFT FILTER PANEL */
+.sidebar{
+    width:320px;
+    background:#ececec;
+    padding:20px;
+    border-right:1px solid #ccc;
+    height:calc(100vh - 60px);
+    overflow-y:auto;
+}
+
+.filter-title{
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:15px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.section{
+    margin-bottom:20px;
+}
+
+.section h4{
+    margin-bottom:10px;
+    font-size:16px;
+}
+
+input[type="text"]{
+    width:100%;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+}
+
+.checkbox-group{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.date-buttons{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.date-buttons button{
+    padding:8px 15px;
+    border:1px solid #3b78a8;
+    background:white;
+    color:#3b78a8;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.date-buttons button.active{
+    background:#3b78a8;
+    color:white;
+}
+
+/* RIGHT CONTENT */
+.main-content{
+    flex:1;
+    padding:20px;
+}
+
+.tabs{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.tab{
+    padding:10px 25px;
+    border:none;
+    cursor:pointer;
+    font-weight:bold;
+    background:#ddd;
+    border-radius:4px;
+}
+
+.tab.active{
+    background:#3b78a8;
+    color:white;
+}
+
+.empty-state{
+    background:white;
+    height:500px;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Assign To Driver</div>
+
+<div class="container">
+
+    <!-- LEFT FILTER PANEL -->
+    <div class="sidebar">
+
+        <div class="filter-title">
+            <span>Filter By</span>
+            <span style="color:#3b78a8; cursor:pointer;">Reset</span>
+        </div>
+
+        <div class="section">
+            <h4>Customer Name</h4>
+            <input type="text" placeholder="Enter Customer Name">
+        </div>
+
+        <div class="section">
+            <h4>Order Type</h4>
+            <div class="checkbox-group">
+                <label><input type="checkbox"> Pick Up</label>
+                <label><input type="checkbox"> Drop Off</label>
+                <label><input type="checkbox"> Pick Up Request Overdue</label>
+                <label><input type="checkbox"> Drop Off Request Overdue</label>
+                <label><input type="checkbox"> Ready to Drop Off</label>
+            </div>
+        </div>
+
+        <div class="section">
+            <h4>Date</h4>
+            <div class="date-buttons">
+                <button class="active">Today</button>
+                <button>Tomorrow</button>
+                <button>Later</button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h4>Time</h4>
+            <div class="checkbox-group">
+                <strong>Pick-up Time</strong>
+                <label><input type="checkbox"> 9:00 AM - 10:30 AM</label>
+                <label><input type="checkbox"> 10:30 AM - 12:00 PM</label>
+                <label><input type="checkbox"> 12:00 PM - 1:30 PM</label>
+                <label><input type="checkbox"> 1:30 PM - 3:00 PM</label>
+                <label><input type="checkbox"> 3:00 PM - 4:30 PM</label>
+                <label><input type="checkbox"> 4:30 PM - 6:00 PM</label>
+                <label><input type="checkbox"> 6:00 PM - 7:30 PM</label>
+                <label><input type="checkbox"> 7:30 PM - 9:00 PM</label>
+
+                <br>
+
+                <strong>Drop-off Time</strong>
+                <label><input type="checkbox"> 3:00 PM - 6:00 PM</label>
+                <label><input type="checkbox"> 6:00 PM - 9:00 PM</label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT CONTENT AREA -->
+    <div class="main-content">
+
+        <div class="tabs">
+            <button class="tab active">UNASSIGNED</button>
+            <button class="tab">ASSIGNED</button>
+        </div>
+
+        <div class="empty-state">
+            <!-- Orders will appear here -->
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Multiple Delivery and Payment</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header-right{
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+.header select{
+    padding:6px 10px;
+    border-radius:4px;
+}
+
+/* FILTER ROWS */
+.filters{
+    padding:15px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
+    align-items:center;
+}
+
+input, select{
+    padding:8px;
+    border:1px solid #4aa3df;
+    border-radius:4px;
+}
+
+/* STATS */
+.stats{
+    padding:0 20px 15px 20px;
+    display:flex;
+    gap:50px;
+    font-size:16px;
+}
+
+.stats b{
+    font-size:18px;
+}
+
+/* CONTENT PANEL */
+.content-panel{
+    background:white;
+    margin:0 20px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    height:350px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#6e6e6e;
+    font-size:32px;
+}
+
+/* LEGEND */
+.legend{
+    display:flex;
+    gap:25px;
+    align-items:center;
+    padding:20px;
+    font-size:14px;
+}
+
+.legend span{
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+/* DELIVER BUTTON */
+.deliver-section{
+    position:fixed;
+    right:30px;
+    bottom:30px;
+}
+
+.deliver-btn{
+    background:#6d94b8;
+    color:white;
+    padding:15px 30px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+.deliver-btn:hover{
+    background:#4f7ea8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div>Multiple Delivery and Payment</div>
+    <div class="header-right">
+        Delivery overdue by
+        <select><option>Select</option></select>
+
+        Service Type
+        <select><option>Dry Cleaning</option></select>
+
+        📅
+        <select>
+            <option>25 Feb 2026 - 25 Feb 2026</option>
+        </select>
+    </div>
+</div>
+
+<div class="filters">
+    <input type="text" placeholder="Select Order">
+    <input type="text" placeholder="Filter by customer Name">
+    <label>Show</label>
+    <select>
+        <option>Garment or Payment</option>
+    </select>
+    <label>Filter</label>
+    <select>
+        <option>Select</option>
+    </select>
+</div>
+
+<div class="stats">
+    <div>Pending Orders : <b>0</b></div>
+    <div>Amount Due : <b>0</b></div>
+    <div>Pcs Under Process : <b>0</b></div>
+    <div>Pcs Ready : <b>0</b></div>
+</div>
+
+<div class="content-panel">
+    No existing transaction found for the customer.
+</div>
+
+<div class="legend">
+    <span>👕 - Denotes Garments are ready.</span>
+    <span>💰 - Denotes Payment is pending.</span>
+    <span>🧺 - Denotes Garments are pending.</span>
+</div>
+
+<div class="deliver-section">
+    <button class="deliver-btn">Deliver</button>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Editing History</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header-right{
+    background:white;
+    padding:6px 12px;
+    border-radius:4px;
+    color:#333;
+}
+
+.header-right select{
+    border:none;
+    outline:none;
+}
+
+/* FILTER SECTION */
+.filters{
+    padding:20px;
+    display:flex;
+    gap:15px;
+    align-items:center;
+}
+
+input{
+    padding:10px;
+    border:1px solid #4aa3df;
+    border-radius:4px;
+    width:250px;
+}
+
+.show-btn{
+    background:#2f5f87;
+    color:white;
+    padding:10px 20px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.show-btn:hover{
+    background:#214763;
+}
+
+/* TABLE */
+.table-section{
+    padding:0 20px 20px 20px;
+}
+
+table{
+    width:500px;
+    border-collapse:collapse;
+    background:white;
+}
+
+th{
+    background:#7a7a7a;
+    color:white;
+    padding:10px;
+    text-align:left;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+}
+
+.action-btn{
+    background:#5fb2c6;
+    color:white;
+    padding:6px 10px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    margin-right:5px;
+}
+
+.action-btn:hover{
+    background:#4a9dad;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+    <div>Editing History</div>
+    <div class="header-right">
+        📅
+        <select>
+            <option>01 Feb 2026 - 28 Feb 2026</option>
+        </select>
+    </div>
+</div>
+
+<div class="filters">
+    <input type="text" placeholder="Search Order">
+    <button class="show-btn">Show</button>
+</div>
+
+<div class="table-section">
+    <table>
+        <thead>
+            <tr>
+                <th>Order No</th>
+                <th>Order Date</th>
+                <th></ावे
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>9</td>
+                <td>22 Feb 2026</td>
+                <td>
+                    <button class="action-btn">Edit History</button>
+                    <button class="action-btn">Order Transition</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

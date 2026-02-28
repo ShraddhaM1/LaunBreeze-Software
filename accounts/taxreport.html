@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Tax Report</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* TOP ALERT */
+.top-alert{
+    background:#d9edf7;
+    color:#31708f;
+    padding:10px 20px;
+    text-align:center;
+    font-size:14px;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.date-filter{
+    padding:8px 12px;
+    border-radius:4px;
+    border:1px solid #ccc;
+}
+
+/* CONTENT */
+.content{
+    padding:30px;
+}
+
+.form-row{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+label{
+    font-weight:bold;
+}
+
+select{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:4px;
+    min-width:220px;
+}
+
+/* REPORT AREA */
+.report-area{
+    background:#e1e6ed;
+    padding:15px;
+    border:1px solid #c5cbd4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-alert">
+    You have 2 pending pick up requests.
+</div>
+
+<div class="header">
+    <div>Tax Report</div>
+    <input type="text" class="date-filter" value="25 Feb 2026 - 25 Feb 2026">
+</div>
+
+<div class="content">
+
+    <div class="form-row">
+        <label>Report Type</label>
+        <select>
+            <option>Booking</option>
+            <option>Delivery</option>
+            <option>Summarised Booking</option>
+            <option>Summarised Delivery</option>
+        </select>
+    </div>
+
+    <div class="report-area">
+        No service tax entry found.
+    </div>
+
+</div>
+
+</body>
+</html>

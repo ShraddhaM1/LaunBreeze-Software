@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home Pick Up Scheduler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    background:#f3f3f3;
+}
+
+/* HEADER */
+.header{
+    background:#3b78a8;
+    color:white;
+    padding:15px 20px;
+    font-size:20px;
+}
+
+/* TOP SECTION */
+.top-section{
+    background:#e9eef3;
+    padding:20px;
+    border-bottom:2px solid #d0d7df;
+}
+
+.row{
+    display:flex;
+    gap:15px;
+    margin-bottom:15px;
+    flex-wrap:wrap;
+}
+
+input, select{
+    padding:10px;
+    border:1px solid #4aa3df;
+    border-radius:4px;
+    min-width:220px;
+}
+
+.btn{
+    padding:10px 20px;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.primary-btn{
+    background:#5f6f7a;
+    color:white;
+}
+
+.secondary-btn{
+    background:#7d8c96;
+    color:white;
+}
+
+.quick-btn{
+    background:#f2f2f2;
+    border:1px solid #ccc;
+}
+
+/* FILTER BAR */
+.filter-bar{
+    padding:15px 20px;
+    display:flex;
+    gap:20px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.counter{
+    padding:12px 25px;
+    color:white;
+    font-weight:bold;
+    font-size:18px;
+}
+
+.overdue{
+    background:#f39c12;
+}
+
+.upcoming{
+    background:#2ecc71;
+}
+
+/* TABLE */
+.table-section{
+    padding:0 20px 20px 20px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th{
+    background:#7a7a7a;
+    color:white;
+    padding:10px;
+    text-align:left;
+}
+
+td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    vertical-align:top;
+}
+
+.action-icons{
+    display:flex;
+    gap:8px;
+}
+
+.icon-btn{
+    background:#3498db;
+    color:white;
+    border:none;
+    padding:6px 8px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.icon-btn.delete{
+    background:red;
+}
+
+/* FOOTER BUTTONS */
+.footer-actions{
+    display:flex;
+    justify-content:space-between;
+    padding:20px;
+}
+
+.bottom-btn{
+    background:#7ec0d3;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.print-btn{
+    background:#5f6f7a;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">Home Pick Up Scheduler</div>
+
+<div class="top-section">
+
+    <div class="row">
+        <input type="text" placeholder="Select Customer">
+        <select>
+            <option>Pickup Date - 25 Feb 2026</option>
+        </select>
+        <select>
+            <option>7:30 PM - 9:00 PM</option>
+        </select>
+    </div>
+
+    <div class="row">
+        <input type="text" placeholder="Special instruction">
+        <button class="btn quick-btn">Same Day + 100%</button>
+        <button class="btn quick-btn">Next Day + 50%</button>
+    </div>
+
+    <div class="row">
+        <button class="btn primary-btn">CREATE PICK UP</button>
+        <button class="btn secondary-btn">ADD NEW CUSTOMER</button>
+    </div>
+
+</div>
+
+<div class="filter-bar">
+    <select>
+        <option>01 Feb 2026 - 28 Feb 2026</option>
+    </select>
+
+    <select>
+        <option>Pending</option>
+    </select>
+
+    <div class="counter overdue">OVERDUE 1</div>
+    <div class="counter upcoming">UPCOMING 1</div>
+</div>
+
+<div class="table-section">
+    <table>
+        <thead>
+            <tr>
+                <th>S No.</th>
+                <th>Pickup No.</th>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Mobile</th>
+                <th>Pickup Date</th>
+                <th>Pickup Time</th>
+                <th>Source</th>
+                <th>Created Date/Time</th>
+                <th>Customer Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>TF8D-21</td>
+                <td>Sandeep hiraman khairnar</td>
+                <td>Dyananand clinic opposite Nikhil medical...</td>
+                <td>******9393</td>
+                <td>25 Feb 2026</td>
+                <td>6:00 PM - 7:30 PM</td>
+                <td>WhatsApp</td>
+                <td>25 Feb 2026 3:18:55 PM</td>
+                <td>New</td>
+                <td>
+                    <div class="action-icons">
+                        <button class="icon-btn">✔</button>
+                        <button class="icon-btn">↗</button>
+                        <button class="icon-btn">⤴</button>
+                        <button class="icon-btn delete">✖</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="footer-actions">
+    <div>
+        <button class="bottom-btn">Mark Complete</button>
+        <button class="bottom-btn">Mark Cancel</button>
+    </div>
+
+    <button class="bottom-btn print-btn">PRINT</button>
+</div>
+
+</body>
+</html>
